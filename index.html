@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Golden Shaker | Casino Royale Cocktails</title>
+    <style>
+        /* Definícia kasíno farieb a fontov */
+        :root {
+            --gold: #d4af37; /* Hlboká zlatá */
+            --gold-light: #f9e1a9; /* Svetlejšia zlatá na odlesky */
+            --burgundy: #800020; /* Tmavá bordová - zamat */
+            --bg-dark: #0a0a0a; /* Skoro čierna */
+            --card-bg: #1a1a1a; /* Tmavosivá pre karty */
+            --text-light: #f5f5f5;
+            --font-heading: 'Playfair Display', serif; /* Elegantný pätkový font */
+            --font-body: 'Cormorant Garamond', serif; /* Luxusný pätkový font pre text */
+        }
+
+        /* Import fontov z Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Playfair+Display:wght@700;900&display=swap');
+
+        body {
+            background-color: var(--bg-dark);
+            /* Jemný prechod evokujúci tlmené svetlo v kasíne */
+            background-image: radial-gradient(circle at 50% -20%, #2c2c2c 0%, var(--bg-dark) 100%);
+            color: var(--text-light);
+            font-family: var(--font-body);
+            margin: 0;
+            padding: 60px 20px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+            /* Zlatý gradient na nadpise */
+            background: linear-gradient(to bottom, var(--gold-light) 0%, var(--gold) 50%, #a67c00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            /* Jemný tieň pre hĺbku */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .subtitle {
+            text-align: center;
+            font-family: var(--font-body);
+            font-size: 1.2rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 60px;
+            font-weight: 600;
+        }
+
+        /* Dekoratívna čiara pod nadpisom */
+        .subtitle::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 2px;
+            background: var(--gold);
+            margin: 15px auto 0;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 4px; /* Ostrejšie rohy sú elegantnejšie */
+            overflow: hidden;
+            /* Zlatý tenký okraj */
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.5s ease;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* Efekt pri prejdení myšou */
+        .card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: var(--gold);
+            box-shadow: 0 15px 50px rgba(212, 175, 55, 0.2);
+        }
+
+        .img-container {
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Sepia filter na obrázky pre vintage nádych */
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease, filter 0.8s ease;
+            filter: sepia(0.3) contrast(1.1);
+        }
+
+        .card:hover img {
+            transform: scale(1.05);
+            filter: sepia(0) contrast(1.1);
+        }
+
+        /* Tmavý gradient cez spodok obrázka pre lepšiu čitateľnosť */
+        .img-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(to top, var(--card-bg) 0%, transparent 100%);
+        }
+
+        .card-info {
+            padding: 30px 25px;
+            text-align: center;
+            background: var(--card-bg);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Ozdobný prvok nad názvom */
+        .card-info::before {
+            content: '♦ ♦ ♦';
+            display: block;
+            color: var(--burgundy);
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            margin: 0;
+            font-family: var(--heading-font);
+            font-size: 1.8rem;
+            color: var(--text-light);
+            font-weight: 700;
+            letter-spacing: 1px;
+            /* Jemný zlatý nádych na názve */
+            background: linear-gradient(to bottom, var(--text-light) 50%, var(--gold-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Pridáme „objednávacie“ tlačidlo pre extra vibe */
+        .order-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 25px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-family: var(--font-body);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .order-btn:hover {
+            background: var(--gold);
+            color: var(--bg-dark);
+        }
+
+        /* Načítavacia animácia */
+        .loader {
+            text-align: center;
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-top: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>The Golden Shaker</h1>
+    <p class="subtitle">Exclusive Casino Royale Cocktails</p>
+    
+    <div class="container" id="cocktail-list">
+        <div class="loader">Načítavam menu...</div>
+    </div>
+
+    <script>
+        // Funkcia na načítanie dát z API
+        async function loadCocktails() {
+            const container = document.getElementById('cocktail-list');
+            
+            try {
+                // 1. Fetch: Vyžiadame si dáta
+                const response = await fetch("https://boozeapi.com/api/v1/cocktails");
+                
+                // Overíme, či je odpoveď v poriadku
+                if (!response.ok) {
+                    throw new Error('Nepodarilo sa načítať dáta z API.');
+                }
+                
+                const json = await response.json();
+                const cocktails = json.data; // Predpokladáme, že dáta sú v poli 'data'
+
+                // Vymažeme loader
+                container.innerHTML = '';
+
+                // 2. Pre každý drink vytvoríme kartu
+                cocktails.forEach(drink => {
+                    // Vytvoríme hlavný div pre kartu
+                    const card = document.createElement('div');
+                    card.className = 'card';
+
+                    // Definujeme vnútorné HTML karty
+                    // Všimni si, že používame ${drink.image} a ${drink.name} na dynamické vloženie dát
+                    card.innerHTML = `
+                        <div class="img-container">
+                            <img src="${drink.image}" alt="${drink.name}" loading="lazy">
+                        </div>
+                        <div class="card-info">
+                            <h3>${drink.name}</h3>
+                            <button class="order-btn">Order Now</button>
+                        </div>
+                    `;
+
+                    // 3. AppendChild: Pridáme hotovú kartu do kontajnera na stránke
+                    container.appendChild(card);
+                });
+
+            } catch (error) {
+                // V prípade chyby zobrazíme oznam
+                console.error("Chyba:", error);
+                container.innerHTML = `<div class="loader" style="color: var(--burgundy);">Prepáčte, naše menu je momentálne nedostupné.<br>${error.message}</div>`;
+            }
+        }
+
+        // Spustíme funkciu po načítaní stránky
+        window.addEventListener('load', loadCocktails);
+    </script>
+</body>
+</html>
