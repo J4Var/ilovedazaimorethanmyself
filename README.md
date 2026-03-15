@@ -1,6 +1,6 @@
 # 🍸 The Golden Shaker | Casino Royale Menu
 
-[![GitHub Pages](https://img.shields.io/badge/Live_Demo-Online-gold?style=for-the-badge&logo=github)](TVOJ_LINK_NA_PAGES_TU)
+[![GitHub Pages](https://img.shields.io/badge/Live_Demo-Online-gold?style=for-the-badge&logo=github)]( https://j4var.github.io/ilovedazaimorethanmyself/)
 
 > "A drink is not just a liquid; it's an entrance to a different world."
 
